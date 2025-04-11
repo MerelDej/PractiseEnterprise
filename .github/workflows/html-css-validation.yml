@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - '*'
-      - '!lib'
+    paths-ignore:
+      - 'wwwroot/lib/**'
 
 jobs:
   build:
