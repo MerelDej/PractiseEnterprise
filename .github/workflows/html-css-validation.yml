@@ -17,4 +17,4 @@ jobs:
       with:
         root: ./
         css: true
-        extra: "--show-warnings --ignore-re /\\.\\/wwwroot\\/lib\\/"
+        extra: "--show-warnings --ignore-re /\\.\\/PractiseEnterprise\\/wwwroot\\/lib\\/"
