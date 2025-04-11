@@ -1,0 +1,20 @@
+name: HTML & CSS Validation
+
+on:
+  push:
+    branches:
+      - '*'
+    paths-ignore:
+      - 'wwwroot/lib/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: HTML+CSS validation
+      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+      with:
+        root: ./
+        css: true
+        extra: "--show-warnings --ignore-re /\\.\\/PractiseEnterprise\\/wwwroot\\/lib\\/"
