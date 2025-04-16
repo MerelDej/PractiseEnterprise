@@ -1,0 +1,19 @@
+name: Deploy to VM
+on: 
+  push: 
+    branches: [ main ] # Elke keer als je naar de main branch pusht
+jobs: 
+  deploy: 
+    runs-on: ubuntu-latest # De runner die de stappen uitvoert
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # Haalt de laatste code op uit je repo
+
+    - name: Deploy to VM via SSH (SCP)  
+      uses: appleboy/scp-action@v0.1.5  # Kopieert bestanden via SCP
+      with:
+        host: ${{ secrets.VM_HOST }}      # IP van je Oracle VM
+        username: ${{ secrets.VM_USER }}  # Gebruikersnaam op de VM (bijv.ubuntu)
+        key: ${{ secrets.VM_PRIVATE_KEY }} # SSH private key (uit GitHub secret)
+        source: "."                       # Wat je wil kopiëren (de hele repo)
+        target: "/home/${{ secrets.VM_USER }}/app-folder"  # Waarheen op de VM
