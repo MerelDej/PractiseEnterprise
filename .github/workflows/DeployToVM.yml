@@ -1,7 +1,7 @@
 name: Deploy to VM
 on: 
   push: 
-    branches: [ main ] # Elke keer als je naar de main branch pusht
+    branches: "*"
 jobs: 
   deploy: 
     runs-on: ubuntu-latest # De runner die de stappen uitvoert
